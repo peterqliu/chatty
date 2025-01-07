@@ -1,0 +1,24 @@
+{
+  "channels": [
+    {
+      "id": 1,
+      "name": "general"
+    },
+    {
+      "id": 2,
+      "name": "random"
+    },
+    {
+      "id": 3,
+      "name": "asda",
+      "createdBy": 1,
+      "createdAt": "2025-01-07T17:16:54.872Z"
+    },
+    {
+      "id": 4,
+      "name": "dogs",
+      "createdBy": 1,
+      "createdAt": "2025-01-07T17:24:39.084Z"
+    }
+  ]
+}

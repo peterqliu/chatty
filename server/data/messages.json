@@ -1,0 +1,243 @@
+{
+  "messages": [
+    {
+      "id": 1,
+      "channelId": 2,
+      "userId": 2,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-07T06:39:28.363Z"
+    },
+    {
+      "id": 2,
+      "channelId": 2,
+      "userId": 2,
+      "text": "werwer",
+      "timestamp": "2025-01-07T06:39:33.156Z"
+    },
+    {
+      "id": 3,
+      "channelId": 1,
+      "userId": 2,
+      "text": "qweqwe",
+      "timestamp": "2025-01-07T06:41:05.772Z"
+    },
+    {
+      "id": 4,
+      "senderId": 2,
+      "receiverId": 2,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-07T06:42:46.320Z",
+      "isDM": true
+    },
+    {
+      "id": 5,
+      "channelId": 1,
+      "userId": 2,
+      "text": "qweqwe",
+      "timestamp": "2025-01-07T06:42:51.196Z"
+    },
+    {
+      "id": 6,
+      "senderId": 2,
+      "receiverId": 3,
+      "text": "asdfasdf",
+      "timestamp": "2025-01-07T06:44:30.872Z",
+      "isDM": true
+    },
+    {
+      "id": 7,
+      "senderId": 2,
+      "receiverId": 2,
+      "text": "werwer",
+      "timestamp": "2025-01-07T06:47:24.409Z",
+      "isDM": true
+    },
+    {
+      "id": 8,
+      "senderId": 2,
+      "receiverId": 2,
+      "text": "werwerwer",
+      "timestamp": "2025-01-07T06:47:59.672Z",
+      "isDM": true
+    },
+    {
+      "id": 9,
+      "channelId": 1,
+      "userId": 2,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-07T07:14:34.974Z"
+    },
+    {
+      "id": 10,
+      "senderId": 11,
+      "receiverId": 2,
+      "text": "asdfsadf",
+      "timestamp": "2025-01-07T07:26:54.796Z",
+      "isDM": true
+    },
+    {
+      "id": 11,
+      "senderId": 11,
+      "receiverId": 2,
+      "text": "qweqwe",
+      "timestamp": "2025-01-07T07:26:56.932Z",
+      "isDM": true
+    },
+    {
+      "id": 12,
+      "channelId": 1,
+      "userId": 11,
+      "text": "werwer",
+      "timestamp": "2025-01-07T07:33:25.460Z"
+    },
+    {
+      "id": 13,
+      "senderId": 2,
+      "receiverId": 11,
+      "text": "sdfadf",
+      "timestamp": "2025-01-07T09:16:14.868Z",
+      "isDM": true
+    },
+    {
+      "id": 14,
+      "channelId": 1,
+      "userId": 11,
+      "text": "aaa",
+      "timestamp": "2025-01-07T09:16:40.902Z"
+    },
+    {
+      "id": 15,
+      "channelId": 2,
+      "userId": 11,
+      "text": "werwer",
+      "timestamp": "2025-01-07T09:16:51.109Z"
+    },
+    {
+      "id": 16,
+      "senderId": 2,
+      "receiverId": 11,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-07T09:17:36.644Z",
+      "isDM": true
+    },
+    {
+      "id": 17,
+      "senderId": 2,
+      "receiverId": 11,
+      "text": "asdasd",
+      "timestamp": "2025-01-07T09:17:38.472Z",
+      "isDM": true
+    },
+    {
+      "id": 18,
+      "senderId": 11,
+      "receiverId": 2,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-07T09:17:49.097Z",
+      "isDM": true
+    },
+    {
+      "id": 19,
+      "senderId": 2,
+      "receiverId": 11,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-07T09:17:54.574Z",
+      "isDM": true
+    },
+    {
+      "id": 20,
+      "senderId": 11,
+      "receiverId": 2,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-07T09:17:58.061Z",
+      "isDM": true
+    },
+    {
+      "id": 21,
+      "channelId": 1,
+      "userId": 11,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-07T09:19:21.066Z"
+    },
+    {
+      "id": 22,
+      "channelId": 1,
+      "userId": 11,
+      "text": "222",
+      "timestamp": "2025-01-07T09:26:10.339Z"
+    },
+    {
+      "id": 23,
+      "channelId": 1,
+      "userId": 1,
+      "text": "qwewqe",
+      "timestamp": "2025-01-07T17:17:57.803Z"
+    },
+    {
+      "id": 24,
+      "channelId": 2,
+      "userId": 1,
+      "text": "werwer",
+      "timestamp": "2025-01-07T17:24:10.772Z"
+    },
+    {
+      "id": 25,
+      "channelId": 3,
+      "userId": 1,
+      "text": "eeee",
+      "timestamp": "2025-01-07T17:24:23.361Z"
+    },
+    {
+      "id": 26,
+      "channelId": 2,
+      "userId": 1,
+      "text": "aaaa",
+      "timestamp": "2025-01-07T17:24:31.344Z"
+    },
+    {
+      "id": 27,
+      "channelId": 4,
+      "userId": 1,
+      "text": "3345345",
+      "timestamp": "2025-01-07T17:24:43.252Z"
+    },
+    {
+      "id": 28,
+      "senderId": 1,
+      "receiverId": 11,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-07T17:33:41.588Z",
+      "isDM": true
+    },
+    {
+      "id": 29,
+      "channelId": 2,
+      "userId": 1,
+      "text": "sdfsd",
+      "timestamp": "2025-01-07T18:08:57.218Z"
+    },
+    {
+      "id": 30,
+      "senderId": 1,
+      "receiverId": 1,
+      "text": "fhfgh",
+      "timestamp": "2025-01-07T18:29:19.132Z",
+      "isDM": true
+    },
+    {
+      "id": 31,
+      "channelId": 1,
+      "userId": 1,
+      "text": "asdfasdf",
+      "timestamp": "2025-01-07T18:30:07.585Z"
+    },
+    {
+      "id": 32,
+      "senderId": 1,
+      "receiverId": 2,
+      "text": "dfgdfg",
+      "timestamp": "2025-01-07T19:26:28.937Z",
+      "isDM": true
+    }
+  ]
+}
