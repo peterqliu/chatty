@@ -389,20 +389,19 @@ app.get('/api/channels/:id', authenticateToken, async (req, res) => {
   }
 });
 
-// Get all users (excluding the current user)
+// Add this endpoint with the other routes
 app.get('/api/users', authenticateToken, async (req, res) => {
   try {
     const data = await readJSON(USERS_FILE);
-    
-    // Filter out the current user and remove sensitive information
-    const users = data.users
-      .filter(u => u.id !== req.user.id)
-      .map(({ id, name, email, photo }) => ({ id, name, email, photo }));
-    
-    res.json(users);
-  } catch (error) {
-    console.error('Error reading users:', error);
-    res.status(500).json({ error: 'Error reading users' });
+    // Return only non-sensitive user data
+    const safeUserData = data.users.map(user => ({
+      id: user.id,
+      username: user.name
+    }));
+    res.json(safeUserData);
+  } catch (err) {
+    console.error('Error reading users:', err);
+    res.status(500).json({ error: 'Internal server error' });
   }
 });
 

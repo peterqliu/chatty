@@ -12,11 +12,18 @@ function DirectMessage() {
   const { token } = useAuth();
 
   useEffect(() => {
-    if (token && userId) {
+    // Initial fetch
+    fetchMessages();
+    fetchOtherUser();
+
+    // Set up polling interval
+    const intervalId = setInterval(() => {
       fetchMessages();
-      fetchOtherUser();
-    }
-  }, [userId, token]);
+    }, 500);
+
+    // Cleanup function to clear interval when component unmounts
+    return () => clearInterval(intervalId);
+  }, [userId]); // Keep userId in dependencies array
 
   const fetchOtherUser = async () => {
     try {

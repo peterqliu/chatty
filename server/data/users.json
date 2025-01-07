@@ -5,19 +5,22 @@
       "name": "Alice Johnson",
       "email": "alice@example.com",
       "password": "password123",
-      "photo": "/uploads/1736271212384-994428378.png"
+      "photo": "/uploads/1736235194830-221877711.png"
     },
     {
       "id": 2,
       "name": "Bob Smith",
       "email": "bob@example.com",
-      "password": "password123"
+      "password": "password123",
+      "photo": "/uploads/1736241042113-650738801.png"
     },
     {
       "id": 3,
       "name": "Charlie Davis",
       "email": "charlie@example.com",
-      "password": "password123"
+      "password": "password123",
+      "photo": "/uploads/sdfsdf.png"
+
     },
     {
       "id": 4,
