@@ -5,11 +5,18 @@ export default defineConfig({
   plugins: [react()],
   server: {
     hmr: {
-      overlay: false // Disable the error overlay
+      overlay: false,
+
     },
     watch: {
-      usePolling: true, // Enable polling for file changes
-      interval: 100 // Check for changes every 100ms
-    }
+      usePolling: true,
+      interval: 100,
+      // Add patterns to watch
+      include: ['src/**/*'],
+      // Ignore node_modules and other unnecessary directories
+      ignored: ['**/node_modules/**', '**/dist/**', '.git/**']
+    },
+    // Enable hot reloading
+    hot: true
   }
-}) 
+})

@@ -1,22 +1,25 @@
 import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../../context/AuthContext';
+import UserProfileBar from './UserProfileBar';
 
+function Sidebar({ userData }) {
+  const { user, token } = useAuth();
 
-function Sidebar() {
-    const { token } = useAuth();
+  const [channels, setChannels] = useState([]);
+  const [directMessages, setDirectMessages] = useState([]);
+  const [showNewChannelDialog, setShowNewChannelDialog] = useState(false);
+  const [newChannelName, setNewChannelName] = useState('');
+  const [showProfileDialog, setShowProfileDialog] = useState(false);
+  const [displayName, setDisplayName] = useState('');
+  const [avatarFile, setAvatarFile] = useState(null);
+  const [avatarPreview, setAvatarPreview] = useState(null);
 
-    const [channels, setChannels] = useState([]);
-    const [directMessages, setDirectMessages] = useState([]);
-    const [showNewChannelDialog, setShowNewChannelDialog] = useState(false);
-    const [newChannelName, setNewChannelName] = useState('');
-    const [showProfileDialog, setShowProfileDialog] = useState(false);
-    const [displayName, setDisplayName] = useState('');
-    const [avatarFile, setAvatarFile] = useState(null);
-    const [avatarPreview, setAvatarPreview] = useState(null);
+  const currentUserData = directMessages.find(u => u.id === user?.id);
 
   useEffect(() => {
     const fetchData = async () => {
+        console.log('fd')
         const headers = {
             'Authorization': `Bearer ${token}`,
             'Content-Type': 'application/json'
@@ -35,26 +38,25 @@ function Sidebar() {
         const usersData = await usersRes.json();
 
         setChannels(channelsData);
-                // Transform users data to match DM format
-        // Note: online status will need to be handled separately
+        // Transform users data to match DM format
         setDirectMessages(usersData.map(user => ({
             id: user.id,
             name: user.username,
-            online: false // Default to offline until we implement real-time status
+            photo: user.photo,
+            online: Date.now()-user.lastSeen < 5000,
           })));
       } catch (error) {
         console.error('Error fetching channels:', error);
         // TODO: Handle error state
       }
     };
-
     fetchData();
+    setInterval(fetchData,5000);
   }, []);
 
   const handleCreateChannel = async (e) => {
     e.preventDefault();
     try {
-      const token = localStorage.getItem('token');
       const response = await fetch('http://localhost:2222/api/channels', {
         method: 'POST',
         headers: {
@@ -111,7 +113,7 @@ function Sidebar() {
       
       // Reset form
       setShowProfileDialog(false);
-      setDisplayName('');
+    //   setDisplayName('');
       setAvatarFile(null);
       setAvatarPreview(null);
     } catch (error) {
@@ -136,7 +138,17 @@ function Sidebar() {
                 <input
                   type="text"
                   value={displayName}
-                  onChange={(e) => setDisplayName(e.target.value)}
+                  onChange={(e) => {
+                    setDisplayName(e.target.value);
+                    fetch('http://localhost:2222/api/users/profile', {
+                      method: 'PUT',
+                      headers: {
+                        'Authorization': `Bearer ${token}`,
+                        'Content-Type': 'application/json'
+                      },
+                      body: JSON.stringify({ name: e.target.value })
+                    });
+                  }}
                   className="w-full px-3 py-2 border rounded text-gray-900"
                   placeholder="Enter display name"
                 />
@@ -254,7 +266,7 @@ function Sidebar() {
               to={`/dm/${dm.id}`}
               className="block px-2 py-1 hover:bg-slack-purple rounded"
             >
-              <span className={`inline-block w-2 h-2 rounded-full mr-2 ${dm.online ? 'bg-green-500' : 'bg-gray-500'}`}></span>
+              <span className={`inline-block w-2 h-2 rounded-full mr-3 -mt-1 text-xs -translate-y-0.5 ${dm.online ? 'text-green-500' : 'text-gray-500'}`}>●</span>
               {dm.name}
             </Link>
           ))}
@@ -269,6 +281,11 @@ function Sidebar() {
         </button>
       </div>
       </div>
+      
+      <UserProfileBar 
+        name={currentUserData?.name}
+        photo={currentUserData?.photo}
+      />
     </div>
   );
 }

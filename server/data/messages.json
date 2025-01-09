@@ -5,133 +5,156 @@
       "channelId": 1,
       "userId": 1,
       "text": "Good morning, everyone! How was the long weekend?",
-      "timestamp": "2025-01-07T08:00:00.000Z"
+      "timestamp": "2025-01-07T08:00:00.000Z",
+      "reactions": {}
     },
     {
       "id": 2,
       "channelId": 1,
       "userId": 2,
       "text": "Morning! It was awesome. I finally went hiking up Eagle Creek Trail. The waterfalls were breathtaking!",
-      "timestamp": "2025-01-07T08:01:15.000Z"
+      "timestamp": "2025-01-07T08:01:15.000Z",
+      "reactions": {}
     },
     {
       "id": 3,
       "channelId": 1,
       "userId": 3,
       "text": "Nice! I’ve been meaning to check that out. Did you go all the way to Tunnel Falls?",
-      "timestamp": "2025-01-07T08:01:45.000Z"
+      "timestamp": "2025-01-07T08:01:45.000Z",
+      "reactions": {}
     },
     {
       "id": 4,
       "channelId": 1,
       "userId": 2,
       "text": "Yup! It’s about a 12-mile round trip, so my legs are sore, but it was worth it. The mist from the falls was so refreshing after the hike up. What about you, [User 3]?",
-      "timestamp": "2025-01-07T08:02:30.000Z"
+      "timestamp": "2025-01-07T08:02:30.000Z",
+      "reactions": {}
     },
     {
       "id": 5,
       "channelId": 1,
       "userId": 3,
       "text": "I stayed in town but had a blast. My partner and I went to that new ramen spot downtown—Tonkotsu Heaven. The broth was ridiculously good, and they make the noodles in-house!",
-      "timestamp": "2025-01-07T08:03:10.000Z"
+      "timestamp": "2025-01-07T08:03:10.000Z",
+      "reactions": {}
     },
     {
       "id": 6,
       "channelId": 1,
       "userId": 1,
       "text": "I’ve heard of that place! Did you have to wait long? I imagine it was packed over the weekend.",
-      "timestamp": "2025-01-07T08:03:45.000Z"
+      "timestamp": "2025-01-07T08:03:45.000Z",
+      "reactions": {}
     },
     {
       "id": 7,
       "channelId": 1,
       "userId": 3,
       "text": "We got there right when they opened, so we only waited about 15 minutes. By the time we left, the line was out the door!",
-      "timestamp": "2025-01-07T08:04:15.000Z"
+      "timestamp": "2025-01-07T08:04:15.000Z",
+      "reactions": {}
     },
     {
       "id": 8,
       "channelId": 1,
       "userId": 1,
       "text": "Smart move! My weekend was pretty chill. I finally started that woodworking project I’ve been putting off—building a coffee table. It’s coming together nicely, but my garage is a sawdust storm now.",
-      "timestamp": "2025-01-07T08:05:00.000Z"
+      "timestamp": "2025-01-07T08:05:00.000Z",
+      "reactions": {}
     },
     {
       "id": 9,
       "channelId": 1,
       "userId": 2,
       "text": "A coffee table? That’s ambitious! What kind of wood are you using?",
-      "timestamp": "2025-01-07T08:05:30.000Z"
+      "timestamp": "2025-01-07T08:05:30.000Z",
+      "reactions": {
+        "heart": [
+          1
+        ]
+      }
     },
     {
       "id": 10,
       "channelId": 1,
       "userId": 1,
       "text": "I’m using reclaimed oak. It’s got a lot of character—knots, a few imperfections. I’m leaning into that rustic vibe.",
-      "timestamp": "2025-01-07T08:06:00.000Z"
+      "timestamp": "2025-01-07T08:06:00.000Z",
+      "reactions": {}
     },
     {
       "id": 11,
       "channelId": 1,
       "userId": 3,
       "text": "That sounds amazing. You’ll have to show us pictures when it’s done!",
-      "timestamp": "2025-01-07T08:06:30.000Z"
+      "timestamp": "2025-01-07T08:06:30.000Z",
+      "reactions": {}
     },
     {
       "id": 12,
       "channelId": 1,
       "userId": 1,
       "text": "Definitely! I’ll probably finish it next weekend. So, [User 2], was the trail crowded, or did you have some quiet moments?",
-      "timestamp": "2025-01-07T08:07:00.000Z"
+      "timestamp": "2025-01-07T08:07:00.000Z",
+      "reactions": {}
     },
     {
       "id": 13,
       "channelId": 1,
       "userId": 2,
       "text": "It was pretty busy at the start, but as we got further in, it thinned out. By the time we hit Tunnel Falls, there were only a couple of other groups. The sound of the water and the greenery made it so peaceful.",
-      "timestamp": "2025-01-07T08:07:45.000Z"
+      "timestamp": "2025-01-07T08:07:45.000Z",
+      "reactions": {}
     },
     {
       "id": 14,
       "channelId": 1,
       "userId": 3,
       "text": "That sounds perfect. I’ve got to make time for that hike soon. Did you take any pictures?",
-      "timestamp": "2025-01-07T08:08:10.000Z"
+      "timestamp": "2025-01-07T08:08:10.000Z",
+      "reactions": {}
     },
     {
       "id": 15,
       "channelId": 1,
       "userId": 2,
       "text": "Tons! I’ll share them in the group chat later. The light coming through the trees made for some epic shots.",
-      "timestamp": "2025-01-07T08:08:45.000Z"
+      "timestamp": "2025-01-07T08:08:45.000Z",
+      "reactions": {}
     },
     {
       "id": 16,
       "channelId": 1,
       "userId": 1,
       "text": "Looking forward to seeing those! Sounds like everyone had a great weekend. We should plan a group hike or outing soon.",
-      "timestamp": "2025-01-07T08:09:15.000Z"
+      "timestamp": "2025-01-07T08:09:15.000Z",
+      "reactions": {}
     },
     {
       "id": 17,
       "channelId": 1,
       "userId": 3,
       "text": "I’m in! Maybe we can do Eagle Creek together. Or even try camping—make a full weekend out of it.",
-      "timestamp": "2025-01-07T08:09:45.000Z"
+      "timestamp": "2025-01-07T08:09:45.000Z",
+      "reactions": {}
     },
     {
       "id": 18,
       "channelId": 1,
       "userId": 2,
       "text": "Camping sounds great! Let’s start planning soon. Maybe springtime?",
-      "timestamp": "2025-01-07T08:10:15.000Z"
+      "timestamp": "2025-01-07T08:10:15.000Z",
+      "reactions": {}
     },
     {
       "id": 19,
       "channelId": 1,
       "userId": 1,
       "text": "Spring works for me. Let’s make it happen!",
-      "timestamp": "2025-01-07T08:10:45.000Z"
+      "timestamp": "2025-01-07T08:10:45.000Z",
+      "reactions": {}
     },
     {
       "id": 20,
@@ -139,7 +162,8 @@
       "receiverId": 11,
       "text": "hi peter!",
       "timestamp": "2025-01-07T23:10:53.645Z",
-      "isDM": true
+      "isDM": true,
+      "reactions": {}
     },
     {
       "id": 21,
@@ -147,7 +171,8 @@
       "receiverId": 1,
       "text": "this is me!",
       "timestamp": "2025-01-07T23:19:17.334Z",
-      "isDM": true
+      "isDM": true,
+      "reactions": {}
     },
     {
       "id": 22,
@@ -155,7 +180,8 @@
       "receiverId": 1,
       "text": "hi alice!",
       "timestamp": "2025-01-07T23:31:10.474Z",
-      "isDM": true
+      "isDM": true,
+      "reactions": {}
     },
     {
       "id": 23,
@@ -163,7 +189,8 @@
       "receiverId": 6,
       "text": "i am alice!",
       "timestamp": "2025-01-07T23:31:19.185Z",
-      "isDM": true
+      "isDM": true,
+      "reactions": {}
     },
     {
       "id": 24,
@@ -171,7 +198,8 @@
       "receiverId": 1,
       "text": "great to meet you",
       "timestamp": "2025-01-07T23:33:58.588Z",
-      "isDM": true
+      "isDM": true,
+      "reactions": {}
     },
     {
       "id": 25,
@@ -179,7 +207,8 @@
       "receiverId": 1,
       "text": "what are some of your favorite foods?",
       "timestamp": "2025-01-07T23:34:16.318Z",
-      "isDM": true
+      "isDM": true,
+      "reactions": {}
     },
     {
       "id": 26,
@@ -187,7 +216,8 @@
       "receiverId": 6,
       "text": "i like strawbery",
       "timestamp": "2025-01-07T23:34:22.738Z",
-      "isDM": true
+      "isDM": true,
+      "reactions": {}
     },
     {
       "id": 27,
@@ -195,28 +225,32 @@
       "receiverId": 1,
       "text": "that is my favorite as well!",
       "timestamp": "2025-01-07T23:34:29.684Z",
-      "isDM": true
+      "isDM": true,
+      "reactions": {}
     },
     {
       "id": 28,
       "channelId": 4,
       "userId": 1,
       "text": "dogs rule",
-      "timestamp": "2025-01-07T23:35:32.323Z"
+      "timestamp": "2025-01-07T23:35:32.323Z",
+      "reactions": {}
     },
     {
       "id": 29,
       "channelId": 1,
       "userId": 1,
       "text": "i also like to have fun",
-      "timestamp": "2025-01-07T23:38:14.805Z"
+      "timestamp": "2025-01-07T23:38:14.805Z",
+      "reactions": {}
     },
     {
       "id": 30,
       "channelId": 5,
       "userId": 1,
       "text": "cats rule",
-      "timestamp": "2025-01-07T23:38:33.204Z"
+      "timestamp": "2025-01-07T23:38:33.204Z",
+      "reactions": {}
     },
     {
       "id": 31,
@@ -224,7 +258,8 @@
       "receiverId": 3,
       "text": "hi charlie!",
       "timestamp": "2025-01-07T23:38:45.565Z",
-      "isDM": true
+      "isDM": true,
+      "reactions": {}
     },
     {
       "id": 32,
@@ -232,7 +267,264 @@
       "receiverId": 1,
       "text": "hi alice!",
       "timestamp": "2025-01-07T23:39:09.927Z",
+      "isDM": true,
+      "reactions": {
+        "heart": [
+          1
+        ]
+      }
+    },
+    {
+      "id": 33,
+      "channelId": 1,
+      "userId": 1,
+      "text": "for real",
+      "timestamp": "2025-01-08T22:32:37.953Z",
+      "reactions": {
+        "heart": [
+          3,
+          1
+        ]
+      }
+    },
+    {
+      "id": 34,
+      "channelId": 1,
+      "userId": 3,
+      "text": "totes",
+      "timestamp": "2025-01-09T00:23:28.882Z"
+    },
+    {
+      "id": 35,
+      "channelId": 1,
+      "userId": 1,
+      "text": "glad you agree",
+      "timestamp": "2025-01-09T00:23:35.420Z"
+    },
+    {
+      "id": 36,
+      "channelId": 2,
+      "userId": 1,
+      "text": "very random!",
+      "timestamp": "2025-01-09T00:42:41.317Z"
+    },
+    {
+      "id": 37,
+      "channelId": 1,
+      "userId": 1,
+      "text": "wow",
+      "timestamp": "2025-01-09T01:36:36.625Z"
+    },
+    {
+      "id": 38,
+      "channelId": 1,
+      "userId": 3,
+      "text": "yep",
+      "timestamp": "2025-01-09T01:36:48.969Z"
+    },
+    {
+      "id": 39,
+      "senderId": 1,
+      "receiverId": 3,
+      "text": "great to meet",
+      "timestamp": "2025-01-09T01:38:03.647Z",
       "isDM": true
+    },
+    {
+      "id": 40,
+      "senderId": 3,
+      "receiverId": 1,
+      "text": "agreed",
+      "timestamp": "2025-01-09T01:38:11.530Z",
+      "isDM": true
+    },
+    {
+      "id": 41,
+      "senderId": 3,
+      "receiverId": 1,
+      "text": "<3",
+      "timestamp": "2025-01-09T01:39:58.447Z",
+      "isDM": true,
+      "reactions": {
+        "heart": [
+          1
+        ]
+      }
+    },
+    {
+      "id": 42,
+      "senderId": 1,
+      "receiverId": 9,
+      "text": "test ian",
+      "timestamp": "2025-01-09T02:12:55.362Z",
+      "isDM": true
+    },
+    {
+      "id": 43,
+      "channelId": 6,
+      "userId": 1,
+      "text": "fish are better",
+      "timestamp": "2025-01-09T02:46:47.742Z"
+    },
+    {
+      "id": 44,
+      "channelId": 1,
+      "userId": 1,
+      "text": "test",
+      "timestamp": "2025-01-09T03:14:10.139Z"
+    },
+    {
+      "id": 45,
+      "channelId": 1,
+      "userId": 1,
+      "text": "foo",
+      "timestamp": "2025-01-09T03:23:21.259Z"
+    },
+    {
+      "id": 46,
+      "channelId": 1,
+      "userId": 3,
+      "text": "bar",
+      "timestamp": "2025-01-09T06:57:23.611Z"
+    },
+    {
+      "id": 47,
+      "channelId": 1,
+      "userId": 1,
+      "text": "baz",
+      "timestamp": "2025-01-09T06:58:10.424Z"
+    },
+    {
+      "id": 48,
+      "channelId": 1,
+      "userId": 1,
+      "text": "ww",
+      "timestamp": "2025-01-09T06:58:30.354Z"
+    },
+    {
+      "id": 49,
+      "channelId": 1,
+      "userId": 1,
+      "text": "WERW",
+      "timestamp": "2025-01-09T07:00:15.066Z"
+    },
+    {
+      "id": 50,
+      "channelId": 1,
+      "userId": 3,
+      "text": "AAA",
+      "timestamp": "2025-01-09T07:00:56.139Z"
+    },
+    {
+      "id": 51,
+      "channelId": 1,
+      "userId": 1,
+      "text": "asd",
+      "timestamp": "2025-01-09T07:02:06.699Z"
+    },
+    {
+      "id": 52,
+      "channelId": 1,
+      "userId": 1,
+      "text": "werwer",
+      "timestamp": "2025-01-09T07:03:34.513Z"
+    },
+    {
+      "id": 53,
+      "channelId": 1,
+      "userId": 1,
+      "text": "sdf",
+      "timestamp": "2025-01-09T07:04:10.620Z"
+    },
+    {
+      "id": 54,
+      "channelId": 1,
+      "userId": 1,
+      "text": "asdfsd",
+      "timestamp": "2025-01-09T07:04:50.535Z"
+    },
+    {
+      "id": 55,
+      "channelId": 1,
+      "userId": 3,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-09T07:04:55.514Z"
+    },
+    {
+      "id": 56,
+      "channelId": 1,
+      "userId": 1,
+      "text": "dfgdfg",
+      "timestamp": "2025-01-09T07:05:35.179Z"
+    },
+    {
+      "id": 57,
+      "channelId": 1,
+      "userId": 3,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-09T07:05:45.231Z"
+    },
+    {
+      "id": 58,
+      "channelId": 1,
+      "userId": 1,
+      "text": "sdf",
+      "timestamp": "2025-01-09T07:06:18.138Z"
+    },
+    {
+      "id": 59,
+      "channelId": 1,
+      "userId": 3,
+      "text": "sdf",
+      "timestamp": "2025-01-09T07:06:24.908Z"
+    },
+    {
+      "id": 60,
+      "channelId": 1,
+      "userId": 1,
+      "text": "s",
+      "timestamp": "2025-01-09T07:07:10.640Z"
+    },
+    {
+      "id": 61,
+      "channelId": 1,
+      "userId": 1,
+      "text": "e",
+      "timestamp": "2025-01-09T07:07:33.866Z"
+    },
+    {
+      "id": 62,
+      "channelId": 1,
+      "userId": 3,
+      "text": "r",
+      "timestamp": "2025-01-09T07:57:47.421Z"
+    },
+    {
+      "id": 63,
+      "channelId": 1,
+      "userId": 1,
+      "text": "w",
+      "timestamp": "2025-01-09T07:57:53.586Z"
+    },
+    {
+      "id": 64,
+      "channelId": 2,
+      "userId": 1,
+      "text": "sdfdsf",
+      "timestamp": "2025-01-09T07:58:33.010Z"
+    },
+    {
+      "id": 65,
+      "senderId": 1,
+      "receiverId": 3,
+      "text": "sdfsdf",
+      "timestamp": "2025-01-09T07:58:45.162Z",
+      "isDM": true,
+      "reactions": {
+        "smile": [
+          1
+        ]
+      }
     }
   ]
 }

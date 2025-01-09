@@ -3,54 +3,9 @@ import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import MessageList from '../components/MessageList';
 
-function Channel() {
-  const { channelId } = useParams();
-  const [messages, setMessages] = useState([]);
+function Channel({ messages, loading, fetchUserData, channelId, setMessages }) {
   const [newMessage, setNewMessage] = useState('');
-  const [loading, setLoading] = useState(true);
   const { token } = useAuth();
-
-  useEffect(() => {
-    if (token && channelId) {
-      fetchMessages();
-    }
-  }, [channelId, token]);
-
-  const fetchUserData = async (userId) => {
-    try {
-      const response = await fetch(`http://localhost:2222/api/users/${userId}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      
-      if (!response.ok) throw new Error('Failed to fetch user');
-      
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching user:', error);
-      return null;
-    }
-  };
-
-  const fetchMessages = async () => {
-    try {
-      const response = await fetch(`http://localhost:2222/api/messages/${channelId}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      
-      if (!response.ok) throw new Error('Failed to fetch messages');
-      
-      const data = await response.json();
-      setMessages(data);
-    } catch (error) {
-      console.error('Error fetching messages:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -89,7 +44,7 @@ function Channel() {
 
   return (
     <div className="flex flex-col h-full bg-white">
-      <MessageList messages={messages} fetchUserData={fetchUserData} />
+      <MessageList messages={messages} setMessages={setMessages} fetchUserData={fetchUserData} />
       <div className="border-t border-gray-200 p-4 bg-white">
         <form onSubmit={handleSubmit} className="flex space-x-4">
           <input

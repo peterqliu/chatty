@@ -1,29 +1,11 @@
-import { useParams } from 'react-router-dom';
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
 import MessageList from '../components/MessageList';
 
-function DirectMessage() {
-  const { userId } = useParams();
-  const [messages, setMessages] = useState([]);
+function DirectMessage({ messages, loading, fetchUserData, userId, setMessages }) {
   const [newMessage, setNewMessage] = useState('');
-  const [loading, setLoading] = useState(true);
   const [otherUser, setOtherUser] = useState(null);
   const { token } = useAuth();
-
-  useEffect(() => {
-    // Initial fetch
-    fetchMessages();
-    fetchOtherUser();
-
-    // Set up polling interval
-    const intervalId = setInterval(() => {
-      fetchMessages();
-    }, 500);
-
-    // Cleanup function to clear interval when component unmounts
-    return () => clearInterval(intervalId);
-  }, [userId]); // Keep userId in dependencies array
 
   const fetchOtherUser = async () => {
     try {
@@ -37,61 +19,6 @@ function DirectMessage() {
       setOtherUser(data);
     } catch (error) {
       console.error('Error fetching other user:', error);
-    }
-  };
-
-  const fetchUserData = async (userId) => {
-    try {
-      const response = await fetch(`http://localhost:2222/api/users/${userId}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      
-      if (!response.ok) throw new Error('Failed to fetch user');
-      
-      return await response.json();
-    } catch (error) {
-      console.error('Error fetching user:', error);
-      return null;
-    }
-  };
-
-  const fetchMessages = async () => {
-    try {
-      const response = await fetch(`http://localhost:2222/api/messages/dm/${userId}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-      
-      if (!response.ok) throw new Error('Failed to fetch messages');
-      
-      const data = await response.json();
-
-      // First fetch the recipient's user data
-      const userResponse = await fetch(`http://localhost:2222/api/users/${userId}`, {
-        headers: {
-          'Authorization': `Bearer ${token}`
-        }
-      });
-
-      if (!userResponse.ok) throw new Error('Failed to fetch recipient data');
-      const recipientData = await userResponse.json();
-      
-      // Map messages and include recipient data
-      const mappedMessages = data.map(message => ({
-        ...message,
-        userId: message.senderId,
-        recipientName: recipientData.name,
-        recipientId: parseInt(userId)
-      }));
-
-      setMessages(mappedMessages);
-    } catch (error) {
-      console.error('Error fetching messages:', error);
-    } finally {
-      setLoading(false);
     }
   };
 
@@ -137,7 +64,7 @@ function DirectMessage() {
   
   return (
     <div className="flex flex-col h-full bg-white">
-      <MessageList messages={messages} fetchUserData={fetchUserData} />
+      <MessageList messages={messages} fetchUserData={fetchUserData} setMessages={setMessages}/>
       <div className="border-t border-gray-200 p-4 bg-white">
         <form onSubmit={handleSubmit} className="flex space-x-4">
           <input

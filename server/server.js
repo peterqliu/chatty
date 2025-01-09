@@ -30,13 +30,17 @@ const authenticateToken = async (req, res, next) => {
       // Decode email from token
       const email = Buffer.from(token, 'base64').toString();
       const data = await readJSON(USERS_FILE);
-      const user = data.users.find(u => u.email === email);
+      const userIndex = data.users.findIndex(u => u.email === email);
       
-      if (!user) {
+      if (userIndex === -1) {
         return res.status(401).json({ error: 'Invalid token' });
       }
   
-      req.user = user;
+      // Update lastSeen timestamp
+      data.users[userIndex].lastSeen = Date.now();
+      await writeJSON(USERS_FILE, data);
+  
+      req.user = data.users[userIndex];
       next();
     } catch (error) {
       console.error('Auth error:', error);
@@ -102,6 +106,23 @@ async function writeJSON(filePath, data) {
   } catch (error) {
     console.error(`Error writing ${filePath}:`, error);
     throw error;
+  }
+}
+
+// Add this function near the top with other utility functions
+async function updateChannelActivity(channelId) {
+  try {
+    const channelsData = JSON.parse(await fs.readFile('./data/channels.json', 'utf8'));
+    const channelIndex = channelsData.channels.findIndex(c => c.id === parseInt(channelId));
+    if (channelIndex !== -1) {
+        console.log('updatingchannelindex', channelIndex)
+
+        channelsData.channels[channelIndex].lastActivity = Date.now();
+      await fs.writeFile('./data/channels.json', JSON.stringify(channelsData, null, 2));
+      console.log('doneupdatingchannelindex')
+    }
+  } catch (error) {
+    console.error('Error updating channel activity:', error);
   }
 }
 
@@ -254,12 +275,28 @@ app.put('/api/users/profile', authenticateToken, upload.single('photo'), async (
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 
 // Messages endpoints
-app.get('/api/messages/:channelId', authenticateToken, async (req, res) => {
+app.get('/api/messages/channel/:channelId/', authenticateToken, async (req, res) => {
   try {
+    const channelId = parseInt(req.params.channelId);
+    const lastFetch = parseInt(req.query.lastFetch) || 0;
+    
+    // Read channels data
+    const channelsData = JSON.parse(await fs.readFile('./data/channels.json', 'utf8'));
+    const channel = channelsData.channels.find(c => c.id === channelId);
+    
+    if (!channel) {
+      return res.status(404).json({ error: 'Channel not found' });
+    }
+    // If client's lastFetch is more recent than channel's last activity, return early
+    if (lastFetch > channel.lastActivity) {
+      return res.json({ noChange: true });
+    }
+
     const data = await readJSON(MESSAGES_FILE);
     const channelMessages = data.messages.filter(
       m => m.channelId === parseInt(req.params.channelId)
     );
+    console.log('CHANGE!')
     res.json(channelMessages);
   } catch (error) {
     console.error('Error reading messages:', error);
@@ -270,6 +307,12 @@ app.get('/api/messages/:channelId', authenticateToken, async (req, res) => {
 app.post('/api/messages', authenticateToken, async (req, res) => {
   try {
     const { channelId, text } = req.body;
+    
+    if (channelId) {
+        console.log('new message')
+      await updateChannelActivity(channelId);
+    }
+
     if (!channelId || !text) {
       return res.status(400).json({ error: 'Channel ID and text are required' });
     }
@@ -360,7 +403,8 @@ app.post('/api/channels', authenticateToken, async (req, res) => {
       id: data.channels.length + 1,
       name,
       createdBy: req.user.id,
-      createdAt: new Date().toISOString()
+      createdAt: new Date().toISOString(),
+      lastActivity: Date.now()
     };
 
     data.channels.push(newChannel);
@@ -396,12 +440,89 @@ app.get('/api/users', authenticateToken, async (req, res) => {
     // Return only non-sensitive user data
     const safeUserData = data.users.map(user => ({
       id: user.id,
-      username: user.name
+      username: user.name, 
+      lastSeen: user.lastSeen
     }));
     res.json(safeUserData);
   } catch (err) {
     console.error('Error reading users:', err);
     res.status(500).json({ error: 'Internal server error' });
+  }
+});
+
+// Add this endpoint before the server start
+app.post('/api/toggleReaction', authenticateToken, async (req, res) => {
+  try {
+    const { messageId, emoji } = req.body;
+
+    // Find the message and its channel
+    const data = JSON.parse(await fs.readFile('./data/messages.json', 'utf8'));
+    const message = data.messages.find(m => m.id === parseInt(messageId));
+    
+    if (message && message.channelId) {
+      await updateChannelActivity(message.channelId);
+    }
+
+    console.log('Toggling reaction:', { messageId, emoji });
+    if (!messageId || !emoji) {
+      return res.status(400).json({ error: 'Message ID and emoji are required' });
+    }
+
+    const messageIndex = data.messages.findIndex(m => m.id === parseInt(messageId));
+    
+    if (messageIndex === -1) {
+      return res.status(404).json({ error: 'Message not found' });
+    }
+
+    // Initialize reactions object if it doesn't exist
+    if (!data.messages[messageIndex].reactions) {
+      data.messages[messageIndex].reactions = {};
+    }
+    
+    // Initialize emoji array if it doesn't exist
+    if (!data.messages[messageIndex].reactions[emoji]) {
+      data.messages[messageIndex].reactions[emoji] = [];
+    }
+
+    const userReactions = data.messages[messageIndex].reactions[emoji];
+    const userIndex = userReactions.indexOf(req.user.id);
+
+    if (userIndex === -1) {
+      // Add reaction
+      userReactions.push(req.user.id);
+    } else {
+      // Remove reaction
+      userReactions.splice(userIndex, 1);
+      // Clean up empty emoji arrays
+      if (userReactions.length === 0) {
+        delete data.messages[messageIndex].reactions[emoji];
+      }
+    }
+
+    await writeJSON(MESSAGES_FILE, data);
+    res.json(data.messages[messageIndex]);
+  } catch (error) {
+    console.error('Error toggling emoji:', error);
+    res.status(500).json({ error: 'Error toggling emoji' });
+  }
+});
+
+// Get reactions for a specific message
+app.get('/api/getReactions/:messageId', authenticateToken, async (req, res) => {
+  try {
+    const messageId = parseInt(req.params.messageId);
+    const data = await readJSON(MESSAGES_FILE);
+    const message = data.messages.find(m => m.id === messageId);
+    
+    if (!message) {
+      return res.status(404).json({ error: 'Message not found' });
+    }
+
+    // Return the reactions object or an empty object if no reactions exist
+    res.json(message.reactions || {});
+  } catch (error) {
+    console.error('Error getting reactions:', error);
+    res.status(500).json({ error: 'Error getting reactions' });
   }
 });
 

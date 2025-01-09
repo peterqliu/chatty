@@ -1,10 +1,49 @@
 import { useState, useEffect } from 'react';
 import { useAuth } from '../context/AuthContext';
+import MessageReactions from './MessageReactions';
+import UserAvatar from './UserAvatar';
 
-function MessageList({ messages, fetchUserData }) {
-  const [users, setUsers] = useState({});
-  const { token } = useAuth();
+function MessageList({ messages, setMessages, fetchUserData }) {
+    const [users, setUsers] = useState({});
+    const [activeReactionMessage, setActiveReactionMessage] = useState(null);
+    const { token, userId } = useAuth();
+  
+    const handleReaction = async (messageId, emoji) => {
+      try {
+        // Toggle the reaction and wait for it to complete
+        const toggleResponse = await fetch('http://localhost:2222/api/toggleReaction', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({
+            messageId,
+            emoji
+          })
+        });
 
+        if (!toggleResponse.ok) {
+          throw new Error('Failed to toggle reaction');
+        }
+
+        // Wait for the toggle response to be processed
+        const newMessage = await toggleResponse.json();
+
+
+        
+        // Update just the reactions for this message
+        const updatedMessages = messages.map(msg => 
+          msg.id === messageId  ? newMessage : msg);
+        
+        setMessages(updatedMessages)
+      } catch (error) {
+        console.error('Error handling reaction:', error);
+      }
+      
+      setActiveReactionMessage(null);
+    };
+    
   useEffect(() => {
     const fetchUsers = async () => {
       const uniqueUserIds = [...new Set(messages.map(m => m.userId))];
@@ -63,34 +102,48 @@ function MessageList({ messages, fetchUserData }) {
             </div>
 
             {dateMessages.map((message) => (
-              <div key={message.id} className="group hover:bg-gray-50 px-4 py-1 -mx-4">
+              <div key={message.id} className="group hover:bg-gray-50 px-4 py-2 -mx-4">
                 <div className="flex items-start space-x-3">
                   <div className="flex-shrink-0">
-                    <img
-                      src={getProfileImage(message.userId)}
-                      alt={users[message.userId]?.name || 'User'}
-                      className="w-9 h-9 rounded object-cover"
-                      onError={(e) => {
-                        e.target.onerror = null;
-                        e.target.src = `https://ui-avatars.com/api/?name=${
-                          encodeURIComponent((users[message.userId]?.name || 'U').charAt(0))
-                        }&background=random`;
-                      }}
-                    />
+                    <UserAvatar user={users[message.userId]} />
                   </div>
                   <div className="flex-grow min-w-0">
-                    <div className="flex items-center">
-                      <span className="font-bold text-gray-900">
-                        {users[message.userId]?.name || `User ${message.userId}`}
-                      </span>
-                      <span className="ml-2 text-xs text-gray-500">
-                        {new Date(message.timestamp).toLocaleTimeString('en-US', {
-                          hour: 'numeric',
-                          minute: '2-digit'
-                        })}
-                      </span>
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center">
+                        <span className="font-bold text-gray-900">
+                          {users[message.userId]?.name || `User ${message.userId}`}
+                        </span>
+                        <span className="ml-2 text-xs text-gray-500">
+                          {new Date(message.timestamp).toLocaleTimeString('en-US', {
+                            hour: 'numeric',
+                            minute: '2-digit'
+                          })}
+                        </span>
+                      </div>
+                      
+                      <div className="relative">
+                        <button 
+                          className="text-gray-400 hover:text-gray-600 text-sm"
+                          onClick={() => setActiveReactionMessage(activeReactionMessage === message.id ? null : message.id)}
+                        >
+                          <span>:)</span>
+                        </button>
+                        
+                        {activeReactionMessage === message.id && (
+                          <div className="absolute bottom-full right-0 mb-1 bg-white shadow-lg rounded-lg border p-2 flex space-x-2 z-10">
+                            <button className="hover:bg-gray-100 p-1 rounded" onClick={() => handleReaction(message.id, 'heart')}>❤️</button>
+                            <button className="hover:bg-gray-100 p-1 rounded" onClick={() => handleReaction(message.id, 'thumbsUp')}>👍</button>
+                            <button className="hover:bg-gray-100 p-1 rounded" onClick={() => handleReaction(message.id, 'thumbsDown')}>👎</button>
+                            <button className="hover:bg-gray-100 p-1 rounded" onClick={() => handleReaction(message.id, 'smile')}>😊</button>
+                          </div>
+                        )}
+                      </div>
                     </div>
-                    <p className="text-gray-900 whitespace-pre-wrap">{message.text}</p>
+                    <p className="text-gray-900 font-light whitespace-pre-wrap text-base">{message.text}</p>
+                    <MessageReactions 
+                        message={message} 
+                        onReaction={handleReaction} 
+                    />
                   </div>
                   <div className="flex-shrink-0 opacity-0 group-hover:opacity-100 transition-opacity">
                     <button className="text-gray-400 hover:text-gray-600">
@@ -102,6 +155,7 @@ function MessageList({ messages, fetchUserData }) {
                     </button>
                   </div>
                 </div>
+
               </div>
             ))}
           </div>

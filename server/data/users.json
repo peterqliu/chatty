@@ -2,25 +2,23 @@
   "users": [
     {
       "id": 1,
-      "name": "Alice Johnson",
+      "name": "allie johnson",
       "email": "alice@example.com",
       "password": "password123",
-      "photo": "/uploads/1736235194830-221877711.png"
+      "lastSeen": 1736444550225
     },
     {
       "id": 2,
-      "name": "Bob Smith",
+      "name": "Bob",
       "email": "bob@example.com",
-      "password": "password123",
-      "photo": "/uploads/1736241042113-650738801.png"
+      "password": "password123"
     },
     {
       "id": 3,
       "name": "Charlie Davis",
       "email": "charlie@example.com",
       "password": "password123",
-      "photo": "/uploads/sdfsdf.png"
-
+      "lastSeen": 1736412461824
     },
     {
       "id": 4,
@@ -68,7 +66,7 @@
       "id": 11,
       "name": "peter l",
       "email": "first@first.com",
-      "photo": "/uploads/1736241042113-650738801.png"
+      "password": "password123"
     }
   ]
 }
