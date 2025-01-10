@@ -1,0 +1,72 @@
+{
+  "users": [
+    {
+      "id": 1,
+      "name": "allie johnson",
+      "email": "alice@example.com",
+      "password": "password123",
+      "lastSeen": 1736484677712
+    },
+    {
+      "id": 2,
+      "name": "Bob",
+      "email": "bob@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 3,
+      "name": "big charles",
+      "email": "charlie@example.com",
+      "password": "password123",
+      "lastSeen": 1736484677529
+    },
+    {
+      "id": 4,
+      "name": "Diana Wilson",
+      "email": "diana@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 5,
+      "name": "Ethan Brown",
+      "email": "ethan@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 6,
+      "name": "Fiona Garcia",
+      "email": "fiona@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 7,
+      "name": "George Martinez",
+      "email": "george@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 8,
+      "name": "Hannah Lee",
+      "email": "hannah@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 9,
+      "name": "Ian Taylor",
+      "email": "ian@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 10,
+      "name": "Julia White",
+      "email": "julia@example.com",
+      "password": "password123"
+    },
+    {
+      "id": 11,
+      "name": "peter l",
+      "email": "first@first.com",
+      "password": "password123"
+    }
+  ]
+}
