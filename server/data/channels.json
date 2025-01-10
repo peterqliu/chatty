@@ -1,0 +1,51 @@
+{
+  "channels": [
+    {
+      "id": 1,
+      "name": "general",
+      "description": "General discussion",
+      "lastActivity": 1736536259801
+    },
+    {
+      "id": 2,
+      "name": "random",
+      "description": "Random stuff",
+      "lastActivity": 1736409513009
+    },
+    {
+      "id": 3,
+      "name": "asda",
+      "createdBy": 1,
+      "createdAt": "2025-01-07T17:16:54.872Z",
+      "lastActivity": 0
+    },
+    {
+      "id": 4,
+      "name": "dogs",
+      "createdBy": 1,
+      "createdAt": "2025-01-07T17:24:39.084Z",
+      "lastActivity": 0
+    },
+    {
+      "id": 5,
+      "name": "cats",
+      "createdBy": 1,
+      "createdAt": "2025-01-07T23:13:29.360Z",
+      "lastActivity": 1736484743480
+    },
+    {
+      "id": 6,
+      "name": "fish",
+      "createdBy": 1,
+      "createdAt": "2025-01-07T23:38:26.776Z",
+      "lastActivity": 0
+    },
+    {
+      "id": 7,
+      "name": "bears",
+      "createdBy": 1,
+      "createdAt": "2025-01-10T19:09:40.155Z",
+      "lastActivity": 1736536185587
+    }
+  ]
+}
