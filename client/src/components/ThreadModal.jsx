@@ -50,7 +50,7 @@ export default function ThreadModal({ isOpen, onClose, parentMessage, users, tok
   };
 
   if (!isOpen) return null;
-  console.log('threadmessages', threadMessages)
+
   return (
     <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
       <div className="bg-white rounded-lg p-6 w-full max-w-2xl">
@@ -60,23 +60,25 @@ export default function ThreadModal({ isOpen, onClose, parentMessage, users, tok
             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
           </svg>
         </button>
-        <Message
-          message={parentMessage}
-          user={users[parentMessage.userId-1]}
-          isThreadView={true}
-          activeReactionMessage={parentMessage}
-        />
         
-        <div className="flex justify-between items-center mb-4">
-          <MessageList messages={threadMessages} users={users} token={token} isThreadView={true} />
-
+        <div className="max-h-[80vh] overflow-y-auto">
+          <Message
+            message={parentMessage}
+            user={users[parentMessage.userId-1]}
+            isThreadView={true}
+            activeReactionMessage={parentMessage}
+          />
+          
+          <div className="flex justify-between items-center mb-4">
+            <MessageList messages={threadMessages} users={users} token={token} isThreadView={true} />
+          </div>
+          
+          <div className="border-b pb-4 mb-4">
+            <p className="font-medium">{parentMessage?.userName}</p>
+            <p>{parentMessage?.content}</p>
+          </div>
         </div>
-        
-        <div className="border-b pb-4 mb-4">
-          <p className="font-medium">{parentMessage?.userName}</p>
-          <p>{parentMessage?.content}</p>
-        </div> 
-        {/* New message form */}
+
         <form onSubmit={handleSubmit}>
           <input
             value={newMessage}
@@ -85,12 +87,6 @@ export default function ThreadModal({ isOpen, onClose, parentMessage, users, tok
             placeholder="Write a reply..."
             rows="3"
           />
-          <button
-            type="submit"
-            className="bg-blue-500 text-white px-4 py-2 rounded hover:bg-blue-600"
-          >
-            Reply
-          </button>
         </form>
       </div>
     </div>

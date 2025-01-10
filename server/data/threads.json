@@ -92,6 +92,20 @@
       "userId": 1,
       "text": "woo",
       "timestamp": "2025-01-10T19:19:56.622Z"
+    },
+    {
+      "id": 4,
+      "parentId": 2,
+      "userId": 1,
+      "text": "yea",
+      "timestamp": "2025-01-10T19:22:58.344Z"
+    },
+    {
+      "id": 5,
+      "parentId": 2,
+      "userId": 1,
+      "text": "bro",
+      "timestamp": "2025-01-10T22:19:24.629Z"
     }
   ],
   "5": [
@@ -126,6 +140,31 @@
       "userId": 1,
       "text": "werwerwer",
       "timestamp": "2025-01-10T04:32:08.457Z"
+    }
+  ],
+  "30": [
+    {
+      "id": 1,
+      "parentId": 30,
+      "userId": 1,
+      "text": "you heard me",
+      "timestamp": "2025-01-10T20:13:19.902Z"
+    }
+  ],
+  "67": [
+    {
+      "id": 1,
+      "parentId": 67,
+      "userId": 1,
+      "text": "prove it",
+      "timestamp": "2025-01-10T20:13:07.273Z"
+    },
+    {
+      "id": 2,
+      "parentId": 67,
+      "userId": 3,
+      "text": "it's just true man",
+      "timestamp": "2025-01-10T20:15:01.742Z"
     }
   ],
   "68": [

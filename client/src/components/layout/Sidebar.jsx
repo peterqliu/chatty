@@ -186,7 +186,7 @@ function Sidebar({ users, setIsSearchOpen }) {
       
       <div className="p-4">
         <button 
-          className="w-full p-1 mb-2 text-m text-center text-gray-700 bg-gray-50/60 hover:bg-gray-100/60 rounded-sm"
+          className="w-full p-1 mb-2 text-m text-center text-white bg-slack-purple/60 hover:bg-slack-purple/50 rounded-sm"
           onClick={() => setIsSearchOpen(true)}
         >
           Search

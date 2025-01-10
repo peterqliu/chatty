@@ -60,8 +60,8 @@ function Message({
             </div>
             
             <div className="relative">
-              {setActiveReactionMessage && <button 
-                className="text-gray-400 hover:text-gray-600 text-sm mr-2"
+              {!isThreadView && setActiveReactionMessage && <button 
+                className="text-gray-400 hover:text-gray-600 text-sm"
                 onClick={() => setActiveReactionMessage(activeReactionMessage === message.id ? null : message.id)}
               >
                 React
@@ -70,7 +70,7 @@ function Message({
                 className="text-gray-400 hover:text-gray-600 text-sm"
                 onClick={() => setParentMessage(message)}
               >
-                <span>Reply</span>
+                <span className="ml-2">Reply</span>
               </button>}
               {activeReactionMessage === message.id && (
                 <div className="absolute bottom-full right-0 mb-1 bg-white shadow-lg rounded-lg border p-2 flex space-x-2 z-10">

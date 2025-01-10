@@ -110,17 +110,14 @@ async function writeJSON(filePath, data) {
   }
 }
 
-// Add this function near the top with other utility functions
 async function updateChannelActivity(channelId) {
   try {
-    const channelsData = JSON.parse(await fs.readFile('./data/channels.json', 'utf8'));
+    const channelsData = await readJSON(CHANNELS_FILE);
     const channelIndex = channelsData.channels.findIndex(c => c.id === parseInt(channelId));
+    
     if (channelIndex !== -1) {
-        console.log('updatingchannelindex', channelIndex)
-
-        channelsData.channels[channelIndex].lastActivity = Date.now();
-      await fs.writeFile('./data/channels.json', JSON.stringify(channelsData, null, 2));
-      console.log('doneupdatingchannelindex')
+      channelsData.channels[channelIndex].lastActivity = Date.now();
+      await writeJSON(CHANNELS_FILE, channelsData);
     }
   } catch (error) {
     console.error('Error updating channel activity:', error);
@@ -591,13 +588,16 @@ app.post('/api/threadMessages', authenticateToken, async (req, res) => {
     // Add the new thread message
     threadsData[parentId].push(newThreadMessage);
 
-    // Update thread count in messages.json
+    // Update thread count in messages.json, and update channel activity
     const messagesData = await readJSON(MESSAGES_FILE);
     const messageIndex = messagesData.findIndex(m => m.id === parseInt(parentId));
-    if (messageIndex !== -1) {
+    const message = messagesData[messageIndex];
+    if (message) {
       messagesData[messageIndex].threadCount =
-        (messagesData[messageIndex].threadCount || 0) + 1;
+        (message.threadCount || 0) + 1;
       await writeJSON(MESSAGES_FILE, messagesData);
+      await updateChannelActivity(message.channelId);
+
     }
 
     // Save updated threads data

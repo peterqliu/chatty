@@ -15,7 +15,7 @@
     "text": "Morning! It was awesome. I finally went hiking up Eagle Creek Trail. The waterfalls were breathtaking!",
     "timestamp": "2025-01-07T08:01:15.000Z",
     "reactions": {},
-    "threadCount": 2
+    "threadCount": 5
   },
   {
     "id": 3,
@@ -23,11 +23,7 @@
     "userId": 3,
     "text": "Nice! I’ve been meaning to check that out. Did you go all the way to Tunnel Falls?",
     "timestamp": "2025-01-07T08:01:45.000Z",
-    "reactions": {
-      "thumbsUp": [
-        1
-      ]
-    },
+    "reactions": {},
     "threadCount": 0
   },
   {
@@ -36,7 +32,11 @@
     "userId": 2,
     "text": "Yup! It’s about a 12-mile round trip, so my legs are sore, but it was worth it. The mist from the falls was so refreshing after the hike up. What about you, [User 3]?",
     "timestamp": "2025-01-07T08:02:30.000Z",
-    "reactions": {},
+    "reactions": {
+      "thumbsUp": [
+        1
+      ]
+    },
     "threadCount": 0
   },
   {
@@ -283,7 +283,7 @@
     "text": "cats rule",
     "timestamp": "2025-01-07T23:38:33.204Z",
     "reactions": {},
-    "threadCount": 0
+    "threadCount": 1
   },
   {
     "id": 31,
@@ -498,7 +498,12 @@
     "userId": 1,
     "text": "asdfsd",
     "timestamp": "2025-01-09T07:04:50.535Z",
-    "threadCount": 0
+    "threadCount": 0,
+    "reactions": {
+      "thumbsUp": [
+        1
+      ]
+    }
   },
   {
     "id": 55,
@@ -608,7 +613,8 @@
     "userId": 3,
     "text": "na dogs are better",
     "timestamp": "2025-01-10T04:52:23.481Z",
-    "threadCount": 0
+    "threadCount": 3,
+    "reactions": {}
   },
   {
     "id": 68,

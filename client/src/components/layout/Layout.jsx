@@ -20,7 +20,7 @@ function Layout() {
     const { token, user } = useAuth();
     const [users, setUsers] = useState([]);
     const [isSearchOpen, setIsSearchOpen] = useState(false);
-
+    const [isModalOpen, setIsModalOpen] = useState(false)
     const fetchUserData = async (userId) => {
         console.log('fud', userId)
         try {
@@ -130,7 +130,22 @@ function Layout() {
             fetchAllUsers();
             setInterval(fetchAllUsers, 5000);
         }
-    }, []);
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                setIsOpen(false);
+            }
+        };
+        setIsModalOpen(isSearchOpen || parentMessage)
+
+        window.addEventListener('keydown', handleEscape);
+        return () => window.removeEventListener('keydown', handleEscape);
+    }, [isSearchOpen, parentMessage]);
+
+    const handleOutsideClick = (e) => {
+        if (e.target === e.currentTarget) {
+            setIsModalOpen(false);
+        }
+    };
 
     return (
         <div className="h-screen flex">
@@ -158,21 +173,28 @@ function Layout() {
                     </Routes>
                 </main>
             </div>
-            {parentMessage && <ThreadModal
-                isOpen={parentMessage}
-                onClose={() => setParentMessage(null)}
-                parentMessage={parentMessage}
-                users={users} 
-                token={token}
-                userId={user.id}
-            />}
+            {isModalOpen &&            
+            <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center"
+             onClick={handleOutsideClick}>
+                <div className="bg-white rounded-lg p-4 w-full max-w-2xl min-h-[50vh] max-h-[80vh] flex flex-col">
+                    {parentMessage && <ThreadModal
+                        isOpen={parentMessage}
+                        onClose={() => setParentMessage(null)}
+                        parentMessage={parentMessage}
+                        users={users} 
+                        token={token}
+                        userId={user.id}
+                    />}
             
-            <SearchModal
-                isOpen={isSearchOpen}
-                setIsOpen={setIsSearchOpen}
-                users={users}
-                token={token}
-            />
+                    <SearchModal
+                        isOpen={isSearchOpen}
+                        setIsOpen={setIsSearchOpen}
+                        users={users}
+                        token={token}
+                    />
+            </div>
+            </div>}
+           
         </div>
     );
 }

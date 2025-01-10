@@ -50,18 +50,12 @@ export default function SearchModal({ isOpen, setIsOpen, token, users }) {
         return () => window.removeEventListener('keydown', handleEscape);
     }, [setIsOpen]);
 
-    const handleOutsideClick = (e) => {
-        if (e.target === e.currentTarget) {
-            setIsOpen(false);
-        }
-    };
 
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center"
-             onClick={handleOutsideClick}>
-            <div className="bg-white rounded-lg p-4 w-full max-w-2xl min-h-[50vh] max-h-[80vh] flex flex-col">
+        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center">
+            <div className="bg-white rounded-lg p-4 w-full h-full max-w-2xl max-h-[90vh] flex flex-col">
                 <form onSubmit={handleSubmit} className="flex items-center gap-4 mb-4">
                     <input 
                         type="text"
@@ -78,11 +72,9 @@ export default function SearchModal({ isOpen, setIsOpen, token, users }) {
                     </button>
                 </form>
         
-                <div className="flex-1 overflow-y-auto">
+                <div className="flex-1 overflow-y-auto min-h-0">
                     <MessageList messages={searchResults} users={users} token={token} isThreadView={true} placeholder={searchResults.length === 0 ? 'No results yet' : ''}/>
                 </div>
-
-
             </div>
         </div>
     )
